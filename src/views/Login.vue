@@ -1,11 +1,12 @@
 <template>
-  <div class="home-view">
-    <div class="home">
-      <h1 class="home__title">Welcome to myPicApp</h1>
-      <div class="home__links">
-        <router-link to="/" class="home__link">Log In</router-link>
-        <router-link to="/" class="home__link">Sign In</router-link>
-      </div>
+  <div class="login-view">
+    <div class="login">
+      <h1 class="login__title">Login</h1>
+      <form @submit.prevent="register" class="login__form">
+        <input v-model="email" type="email" placeholder="E-mail" />
+        <input v-model="password" type="password" placeholder="Password" />
+        <button type="submit">Register</button>
+      </form>
     </div>
   </div>
 </template>
@@ -14,36 +15,29 @@
 // @ is an alias to /src
 
 export default {
-  name: "Home",
+  name: "Login",
   data() {
     return {
-      name: "",
+      email: "",
+      password: "",
     };
   },
   // pobieramy dane
-  mounted() {
-    this.$db
-      .collection("test")
-      .doc("test")
-      .get()
-      .then((snap) => {
-        this.name = snap.data().name;
-      });
-  },
+  mounted() {},
   methods: {
-    updateName() {
-      this.$db
-        .collection("test")
-        .doc("test")
-        .update({
-          name: this.name,
-        });
+    async register() {
+      console.log("cos");
+      const user = await this.$auth.createUserWithEmailAndPassword(
+        this.email,
+        this.password
+      );
+      console.log(user);
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-.home-view {
+.login-view {
   width: 100%;
   height: 100%;
   display: flex;
@@ -51,22 +45,22 @@ export default {
   align-items: center;
   background: $bg url("../assets/bg.jpeg") no-repeat top center;
   background-size: cover;
-  .home {
+  .login {
     width: 600px;
-    height: 400px;
+    height: 500px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
     background-color: $bg;
     // backdrop-filter: blur(10px);
-    .home__title {
+    .login__title {
       font-size: 35px;
       margin: 0;
     }
-    .home__links {
+    .login__links {
       display: flex;
-      .home__link {
+      .login__link {
         display: block;
         background: $bg-dark;
         padding: 5px 10px;
