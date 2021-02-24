@@ -3,7 +3,7 @@
     <div class="home">
       <h1 class="home__title">Welcome to myPicApp</h1>
       <div class="home__links">
-        <router-link to="/" class="home__link">Log In</router-link>
+        <router-link to="/Login" class="home__link">Log In</router-link>
         <router-link to="/" class="home__link">Sign In</router-link>
       </div>
     </div>
@@ -49,8 +49,11 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $bg url("../assets/bg.jpeg") no-repeat top center;
-  background-size: cover;
+  @media (min-width: 600px) {
+    background: $bg url("../assets/bg.jpeg") no-repeat top center;
+    background-size: cover;
+    backdrop-filter: blur(10px);
+  }
   .home {
     width: 600px;
     height: 400px;
@@ -61,8 +64,15 @@ export default {
     background-color: $bg;
     // backdrop-filter: blur(10px);
     .home__title {
-      font-size: 35px;
-      margin: 0;
+      font-size: 25px;
+      border: 1px solid tomato;
+      margin-left: 3vw;
+
+      @media (min-width: 600px) {
+        font-size: 35px;
+        border: 1px solid tomato;
+        margin-left: 3vw;
+      }
     }
     .home__links {
       display: flex;
@@ -70,13 +80,15 @@ export default {
         display: block;
         background: $bg-dark;
         padding: 5px 10px;
-        margin: 10px;
+        margin: 50px;
         border-radius: 10px;
         color: $bg;
         text-decoration: none;
         font-weight: bold;
         border: 3px solid $bg-dark;
         transition: 0.3s ease;
+        @media (min-width: 320px) {
+        }
         &:hover {
           background-color: $bg;
           color: $bg-dark;

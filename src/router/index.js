@@ -21,6 +21,11 @@ const routes = [
     name: "Profile",
     component: () => import("@/views/Profile.vue"),
   },
+  {
+    path: "/menu",
+    name: "Menu",
+    component: () => import("@/views/Menu.vue"),
+  },
 ];
 
 const router = new VueRouter({

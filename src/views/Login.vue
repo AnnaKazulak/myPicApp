@@ -43,11 +43,13 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: $bg url("../assets/bg.jpeg") no-repeat top center;
-  background-size: cover;
+  @media (min-width: 600px) {
+    background: $bg url("../assets/bg.jpeg") no-repeat top center;
+    background-size: cover;
+  }
   .login {
-    width: 600px;
-    height: 500px;
+    width: 90vw;
+    height: 70vh;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -75,6 +77,45 @@ export default {
           background-color: $bg;
           color: $bg-dark;
         }
+      }
+    }
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+
+    .login__form {
+      display: flex;
+      width: 60vw;
+      height: 30vh;
+
+      font-family: "Merienda", cursive;
+      letter-spacing: 15px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+
+      input {
+        width: 90%;
+        height: 15%;
+        border: none;
+        // box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2),
+        //   0 5px 5px 0 rgba(0, 0, 0, 0.24);
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+          0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
+        background-color: $decorative-lighter;
+        margin: 0 0 15px;
+        padding: 15px;
+        box-sizing: border-box;
+        font-size: 14px;
+      }
+      button {
+        align-items: center;
+        color: $bg;
+        width: 30%;
+        height: 15%;
+        background-color: $decorative;
+        border: none;
+        border-radius: 5px;
+        box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14),
+          0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
       }
     }
   }
